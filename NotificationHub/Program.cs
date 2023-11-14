@@ -17,7 +17,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowVueApp",
         builder => builder
-            .WithOrigins("http://localhost:8080")
+            .WithOrigins("http://59.94.176.2:8089")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials() // Allow credentials
@@ -27,11 +27,8 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
